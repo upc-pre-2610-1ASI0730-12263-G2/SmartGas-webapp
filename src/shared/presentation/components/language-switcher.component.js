@@ -3,19 +3,13 @@ import { useI18n } from 'vue-i18n';
 export default {
   name: 'LanguageSwitcher',
   setup() {
-    const { locale, t } = useI18n();
-
-    const changeLanguage = (value) => {
-      locale.value = value;
-      localStorage.setItem('smartgas-locale', value);
-      document.documentElement.lang = value;
-    };
-
-    return { locale, t, changeLanguage };
+    const { locale } = useI18n();
+    const changeLanguage = (lang) => { locale.value = lang; };
+    return { locale, changeLanguage };
   },
   template: `
-    <div class="language-switcher" :aria-label="t('language')">
-      <button type="button" :class="{ active: locale === 'en' }" @click="changeLanguage('en')">EN</button>
-      <button type="button" :class="{ active: locale === 'es' }" @click="changeLanguage('es')">ES</button>
+    <div class="lang-switcher" aria-label="Language selector" role="group">
+      <button type="button" class="lang-btn" :class="{ active: locale === 'en' }" aria-label="Switch to English" @click.stop.prevent="changeLanguage('en')">EN</button>
+      <button type="button" class="lang-btn" :class="{ active: locale === 'es' }" aria-label="Cambiar a Español" @click.stop.prevent="changeLanguage('es')">ES</button>
     </div>`
 };

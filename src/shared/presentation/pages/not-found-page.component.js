@@ -1,18 +1,21 @@
 import { useI18n } from 'vue-i18n';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'NotFoundPage',
   setup() {
     const { t } = useI18n();
-    return { t };
+    const router = useRouter();
+    return { t, router };
   },
   template: `
-    <main class="not-found-page">
-      <section class="content-card">
-        <span class="eyebrow">404</span>
-        <h1>{{ t('notFoundTitle') }}</h1>
+    <section class="not-found-page" aria-label="Page not found">
+      <div class="not-found-content">
+        <i class="pi pi-exclamation-circle not-found-icon" aria-hidden="true"></i>
+        <h1>404</h1>
+        <h2>{{ t('notFound') }}</h2>
         <p>{{ t('notFoundText') }}</p>
-        <router-link class="primary-link" to="/app/dashboard">{{ t('goDashboard') }}</router-link>
-      </section>
-    </main>`
+        <Button :label="t('goHome')" icon="pi pi-home" @click="router.push('/app/dashboard')" />
+      </div>
+    </section>`
 };
