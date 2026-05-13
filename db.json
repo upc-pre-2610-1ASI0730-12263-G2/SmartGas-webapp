@@ -1,0 +1,19 @@
+{
+  "accounts": [
+    {
+      "id": 1,
+      "name": "SmartGas Admin",
+      "email": "usuario@smartgas.com",
+      "password": "smartgas",
+      "role": "administrator"
+    }
+  ],
+  "zones": [],
+  "sensors": [],
+  "sensorReadings": [],
+  "incidents": [],
+  "notifications": [],
+  "reports": [],
+  "plans": [],
+  "subscriptionRequests": []
+}
